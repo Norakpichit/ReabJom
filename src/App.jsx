@@ -1,3 +1,4 @@
+import Footer from "./User/Footer";
 import Navbar from "./User/Navbar";
 import Slideshow from "./User/Slideshow";
 import WhyUs from "./User/WhyUs";
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
       <Slideshow />
       <WhyUs />
+      <Footer />
     </div>
   );
 }
