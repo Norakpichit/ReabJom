@@ -1,15 +1,15 @@
-import logo from "../assets/logo.jpg";
+import logo from "../../assets/logo.jpg";
 
 export default function Navbar() {
   return (
-    <div className="navbar h-16 border-2 border-b-slate-900">
+    <div className="navbar h-16 border-2 border-b-slate-900 p-5">
       <div className="navbar-start">
-        <a className="btn btn-ghost normal-case text-xl">
-          <img src={logo} alt="" className=" h-12" />
+        <a className="btn btn-ghost normal-case">
+          <img src={logo} alt="" className=" h-full" />
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 text-xl gap-6">
           <li>
             <a>Home</a>
           </li>
@@ -23,7 +23,7 @@ export default function Navbar() {
             <a>About us</a>
           </li>
           <li>
-            <a>Your Booking</a>
+            <a href="Booking">Your Booking</a>
           </li>
         </ul>
       </div>
