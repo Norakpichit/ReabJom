@@ -1,16 +1,15 @@
-import Footer from "./User/Footer";
-import Navbar from "./User/Navbar";
-import Slideshow from "./User/Slideshow";
-import WhyUs from "./User/WhyUs";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Homepage from "./User/Pages/Homepage";
+import Booking from "./User/Pages/Booking";
 
 function App() {
   return (
-    <div className=" flex flex-col gap-10">
-      <Navbar />
-      <Slideshow />
-      <WhyUs />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="Booking" element={<Booking />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
