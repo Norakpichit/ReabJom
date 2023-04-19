@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="footer p-10 bg-base-200 text-base-content">
+    <footer className="footer p-20 bg-base-200 text-base-content grid grid-cols-4 max-md:grid-cols-2">
       <div>
         <span className="footer-title">Services</span>
         <a className="link link-hover">Branding</a>
@@ -23,16 +23,12 @@ export default function Footer() {
       </div>
       <div>
         <span className="footer-title">Newsletter</span>
-        <div className="form-control w-80">
+        <div className="form-control w-80 max-md:w-60 max-sm:w-52">
           <label className="label">
             <span className="label-text">Enter your email address</span>
           </label>
           <div className="relative">
-            <input
-              type="text"
-              placeholder="username@site.com"
-              className="input input-bordered w-full pr-16"
-            />
+            <input type="text" className="input input-bordered w-full pr-16" />
             <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">
               Subscribe
             </button>
