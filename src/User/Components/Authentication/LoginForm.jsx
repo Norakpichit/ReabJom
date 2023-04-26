@@ -18,7 +18,8 @@ export default function LoginForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div className='m-auto !z-5 relative flex flex-col rounded-[20px] max-w-[300px] md:max-w-[400px] bg-blue-200 bg-clip-border shadow-3xl shadow-shadow-500 flex flex-col w-full !p-6 3xl:p-![18px] bg-white undefined'>    
             <div className="mb-4">
                 <label className="block text-gray-700 font-bold mb-2" htmlFor="username">
                     Username
@@ -55,7 +56,8 @@ export default function LoginForm() {
                     Forgot Password?
                 </a>
             </div>
-        </form>
+        </div>
+    </form>
     );
 }
 
