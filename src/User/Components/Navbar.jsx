@@ -66,9 +66,12 @@ export default function Navbar() {
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end space-x-2">
         <Link to="/Login">
           <a className="btn">Login</a>
+        </Link>
+        <Link to="/Signup">
+          <a className="btn">Signup</a>
         </Link>
       </div>
     </div>
