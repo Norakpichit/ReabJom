@@ -1,4 +1,3 @@
-import Footer from "../Components/Footer";
 import RatingSlide from "../Components/Homepage/RatingSlide";
 import Slideshow from "../Components/Homepage/Slideshow";
 import WhyUs from "../Components/Homepage/WhyUs";

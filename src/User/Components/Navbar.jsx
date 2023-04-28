@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/logo.png";
 
 export default function Navbar() {
   return (
-    <div className="navbar h-16 border-2 border-b-slate-900">
+    <div className="navbar h-16 bg-dark text-white text-xl font-extralight fixed z-50 ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -24,7 +24,7 @@ export default function Navbar() {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-light rounded-box w-52 text-[#548BBE]"
           >
             <li>
               <Link to="/">Home</Link>
@@ -48,26 +48,31 @@ export default function Navbar() {
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
+        <ul className="menu menu-horizontal flex px-1 gap-5 ">
+          <li className=" rounded-xl hover:translate-y-1 transition-all active">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className=" rounded-xl hover:translate-y-1 transition-all">
             <a>Rating</a>
           </li>
-          <li>
+          <li className=" rounded-xl hover:translate-y-1 transition-all">
             <a>Details</a>
           </li>
-          <li>
+          <li className=" rounded-xl hover:translate-y-1 transition-all">
             <a>About us</a>
           </li>
-          <li>
+          <li className=" rounded-xl hover:translate-y-1 transition-all">
             <Link to="/Booking">Your Booking</Link>
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Get started</a>
+      <div className="navbar-end gap-3 flex justify-end items-center">
+        <a className="btn btn-sm bg-transparent border-none hover:bg-transparent hover:translate-y-1">
+          Log In
+        </a>
+        <a className="btn bg-light border-none hover:bg-light hover:translate-y-1 transition-all btn-sm text-[#548BBE] ">
+          Sign Up
+        </a>
       </div>
     </div>
   );

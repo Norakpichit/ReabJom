@@ -16,7 +16,15 @@ export default {
       "4xl": "2.441rem",
       "5xl": "3.052rem",
     },
-    extend: {},
+    extend: {
+      backgroundColor: (theme) => ({
+        dark: "#548BBE",
+        light: "#CDDEFF",
+      }),
+      backgroundImage: (theme) => ({
+        "sen-sok": "url('./src/assets/sen-sok.jpeg')",
+      }),
+    },
   },
   plugins: [require("daisyui")],
 };

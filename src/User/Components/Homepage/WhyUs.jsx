@@ -1,6 +1,6 @@
 export default function WhyUs() {
   return (
-    <div className="flex justify-center bg-slate-300 items-center w-full max-sm:flex-col-reverse p-10">
+    <div className="flex justify-center bg-gradient-to-t from-[#CDDEFF] to-white items-center w-full max-sm:flex-col-reverse p-10">
       <div id="whyUs" className="flex flex-col gap-5 items-center">
         <h1 className="text-2xl font-bold">Why us?</h1>
         <div className=" w-56 max-md:w-40 max-sm:w-28 h-40 max-md:h-32 max-sm:h-24 bg-slate-50 rounded-3xl flex justify-center items-center border-2 border-slate-900">

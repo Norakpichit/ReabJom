@@ -1,60 +1,36 @@
 export default function CardContainer() {
   return (
-    <div className="grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 p-10 gap-10 max-md:gap-5 bg-slate-300">
-      <div className="card w-full bg-primary text-primary-content">
-        <div className="card-body">
-          <h2 className="card-title">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn">Buy Now</button>
-          </div>
+    <div className="grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 p-10 gap-10 max-md:gap-8 bg-gradient-to-t from-[#CDDEFF] to-white">
+      <a href="">
+        <div className="card w-full h-56 text-primary-content flex justify-center items-center text-2xl font-extrabold bg-sen-sok bg-cover bg-center hover:opacity-70 hover:translate-y-[-20px] transition-all">
+          Venue
         </div>
-      </div>
-      <div className="card w-full bg-primary text-primary-content">
-        <div className="card-body">
-          <h2 className="card-title">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn">Buy Now</button>
-          </div>
+      </a>
+      <a href="">
+        <div className="card w-full h-56 text-primary-content flex justify-center items-center text-2xl font-extrabold hover:opacity-50 hover:translate-y-[-20px] transition-transform bg-secondary">
+          Salon
         </div>
-      </div>
-      <div className="card w-full bg-primary text-primary-content">
-        <div className="card-body">
-          <h2 className="card-title">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn">Buy Now</button>
-          </div>
+      </a>
+      <a href="">
+        <div className="card w-full h-56 text-primary-content flex justify-center items-center text-2xl font-extrabold hover:opacity-50 hover:translate-y-[-20px] transition-transform bg-secondary">
+          Chef
         </div>
-      </div>
-      <div className="card w-full bg-primary text-primary-content">
-        <div className="card-body">
-          <h2 className="card-title">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn">Buy Now</button>
-          </div>
+      </a>
+      <a href="">
+        <div className="card w-full h-56 text-primary-content flex justify-center items-center text-2xl font-extrabold hover:opacity-50 hover:translate-y-[-20px] transition-transform bg-secondary">
+          Invitation
         </div>
-      </div>
-      <div className="card w-full bg-primary text-primary-content">
-        <div className="card-body">
-          <h2 className="card-title">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn">Buy Now</button>
-          </div>
+      </a>
+      <a href="">
+        <div className="card w-full h-56 text-primary-content flex justify-center items-center text-2xl font-extrabold hover:opacity-50 hover:translate-y-[-20px] transition-transform bg-secondary">
+          Preparation
         </div>
-      </div>
-      <div className="card w-full bg-primary text-primary-content">
-        <div className="card-body">
-          <h2 className="card-title">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn">Buy Now</button>
-          </div>
+      </a>
+      <a href="">
+        <div className="card w-full h-56 text-primary-content flex justify-center items-center text-2xl font-extrabold hover:opacity-50 hover:translate-y-[-20px] transition-transform bg-secondary">
+          Decoration
         </div>
-      </div>
+      </a>
     </div>
   );
 }

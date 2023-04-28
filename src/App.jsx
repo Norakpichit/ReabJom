@@ -8,6 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
+      <div className="bg-dark h-16"></div>
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="Booking" element={<Booking />} />

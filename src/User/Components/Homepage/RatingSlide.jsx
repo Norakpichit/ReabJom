@@ -1,6 +1,6 @@
 export default function RatingSlide() {
   return (
-    <div className="carousel w-full">
+    <div className="carousel w-full bg-gradient-to-b from-[#CDDEFF] to-white">
       <div id="rating1" className="carousel-item relative w-full h-96">
         <div
           className="absolute flex justify-between items-center
