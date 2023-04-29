@@ -12,7 +12,7 @@ export default function SignupForm(){
     };
     
     const handleLastnameChange = (event) => {
-        setFirstname(event.target.value);
+        setLastname(event.target.value);
     };
     
     const handleUsernameChange = (event) => {
@@ -39,9 +39,10 @@ export default function SignupForm(){
                     <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="firstname"
                     type="text"
-                    placeholder="Enter your first name"
+                    placeholder="នាម"
                     value={firstname}
                     onChange={handleFirstnameChange}
+                    required
                     />
                 </div>
 
@@ -50,9 +51,10 @@ export default function SignupForm(){
                     <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="lastname"
                     type="text"
-                    placeholder="Enter your last name"
+                    placeholder="នាមត្រកូល"
                     value={lastname}
                     onChange={handleLastnameChange}
+                    required
                     />
                 </div>
                 
@@ -61,20 +63,26 @@ export default function SignupForm(){
                     <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="username"
                     type="tel"
-                    placeholder="Enter your phone number"
+                    placeholder="លេខទូរសព្ទ"
+                    pattern="[0]{1}[1-9]{1}[0-9]{7}|[0]{1}[1-9]{1}[0-9]{8}" 
                     value={username}
                     onChange={handleUsernameChange}
+                    required
                     />
                 </div>
                 
                 <div className="mb-6">
-                    <label className="block text-gray-700 font-bold mb-2" htmlFor="username"> Password </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    <label className="block text-gray-700 font-bold" htmlFor="username"> Password </label>
+                    <small className='text-green-700 flex'>* ត្រូវមានយ៉ាងតិច <div className={"text-red-600"}> &nbsp; 8តួ &nbsp;</div> ហើយ <div className={"text-red-600"}> &nbsp; 1តួ &nbsp;</div> ជា​ (លេខ និង អក្សរធំ) 
+                    {/*At least 1 (Number,Uppercase) and 8 or more characters*/}</small>
+                    <input className="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="password"
                     type="password"
-                    placeholder="Enter your password"
+                    placeholder="ពាក្យសម្ងាត់"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     value={password}
                     onChange={handlePasswordChange}
+                    required
                     />
                 </div>
 
