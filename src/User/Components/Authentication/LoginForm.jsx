@@ -30,8 +30,10 @@ export default function LoginForm() {
                 id="username"
                 type="text"
                 placeholder="អ៊ីមែល ឬ លេខទូរស័ព្ទ"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$|[0]{1}[1-9]{1}[0-9]{7}|[0]{1}[1-9]{1}[0-9]{8}"
                 value={username}
                 onChange={handleUsernameChange}
+                required
                 />
             </div>
 
@@ -42,8 +44,10 @@ export default function LoginForm() {
                 id="password"
                 type="password"
                 placeholder="ពាក្យសម្ងាត់"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 value={password}
                 onChange={handlePasswordChange}
+                required
                 />
             </div>
 
