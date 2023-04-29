@@ -69,10 +69,10 @@ export default function Navbar() {
 
       <div className="navbar-end gap-3 flex justify-end items-center">
         <Link to="/Login">
-          <a className="btn btn-sm bg-transparent border-none hover:bg-transparent hover:translate-y-1">Login</a>
+          <a className="btn btn-sm bg-transparent border-none hover:bg-transparent hover:translate-y-1">Log in</a>
         </Link>
         <Link to="/SignUp">
-          <a className="btn bg-light border-none hover:bg-light hover:translate-y-1 transition-all btn-sm text-[#548BBE] ">Signup</a>
+          <a className="btn bg-light border-none hover:bg-light hover:translate-y-1 transition-all btn-sm text-[#548BBE] ">Sign up</a>
         </Link>
       </div>
     </div>
