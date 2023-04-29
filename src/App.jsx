@@ -4,7 +4,7 @@ import Booking from "./User/Pages/Booking";
 import Login from "./User/Pages/Login";
 import Navbar from "./User/Components/Navbar";
 import Footer from "./User/Components/Footer";
-import Signup from "./User/Pages/SignUp";
+import Signup from "./User/Pages/Signup";
 
 function App() {
   return (
