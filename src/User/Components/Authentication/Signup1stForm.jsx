@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import withus_black from "../../../assets/withus_black.png";
 import { Link } from 'react-router-dom';
+import {BsTelephoneFill} from "react-icons/bs";
+import PhoneInput from 'react-phone-input-2';
+import "react-phone-input-2/lib/style.css";
 
 export default function Signup1stForm(){
     const [switchSignup, setSwitchSignup] = useState(false);
     const [username, setUsername] = useState('');
     const [isFormValid, setIsFormValid] = useState(false);
+    const [ph, setPh] = useState("");
     // const [resetUsername, setResetUsername] = useState(false);
     
     useEffect(() => {
@@ -53,8 +57,14 @@ export default function Signup1stForm(){
             <div className='m-auto !z-5 relative flex flex-col rounded-[20px] max-w-[300px] md:max-w-[400px] bg-blue-200 bg-clip-border shadow-3xl shadow-shadow-500 flex flex-col w-full !p-6 3xl:p-![18px] undefined'>    
                 <img src={withus_black} alt="" className=" h-12 m-auto" /> 
                 <label className='text-center block mb-3 mt-1'> Create an Account </label>
+                <div className='bg-white text-blue-500 w-fit mb-3 mx-auto p-4 rounded-full'>
+                    <BsTelephoneFill size={30} />
+                </div>
+
+                <h1 className="text-gray-700 font-bold mb-3 mx-auto"> Phone Number </h1>
+                <PhoneInput country={"in"} value={ph} onChange={setPh} className="mb-4" />
                 
-                <div>
+                {/* <div>
                     {!switchSignup &&
                         <div className="mb-3">
                             <label className="block text-gray-700 font-bold mb-2" htmlFor="username"> Phone Number </label>
@@ -80,21 +90,21 @@ export default function Signup1stForm(){
                             onChange={handleEmailChange}
                             />
                         </div>}
-                </div>
+                </div> */}
 
-                <div className="flex items-center justify-between">
+                {/* <div className="flex items-center justify-between"> */}
                     <Link to="/Signup/Info">
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        <button className="bg-blue-500 w-full flex gap-1 justify-center hover:bg-blue-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline"
                         type="submit" disabled={!isFormValid}>
-                            Sign up
+                            <span>Sign Up</span>
                         </button>
                     </Link>
 
-                    <button className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#"
+                    <button className="mt-3 inline-block align-center font-bold text-sm text-blue-500 hover:text-blue-800" href="#"
                     onClick={handleClick}>
                         Try Another Way?
                     </button>
-                </div>
+                {/* </div> */}
             </div>
         </form>
     );
