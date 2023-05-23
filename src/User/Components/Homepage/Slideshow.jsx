@@ -20,7 +20,7 @@ export default function Slideshow() {
     <div className=" w-full h-[300px] lg:h-[600px] flex justify-center bg-gradient-to-b from-[#CDDEFF] to-white">
       <div
         className={
-          " w-[100%] lg:w-4/5 h-full flex justify-between bg-cover bg-center lg:rounded-b-3xl"
+          " w-[100%] lg:w-4/5 h-full flex justify-between bg-cover bg-center lg:rounded-b-3xl transition-all drop-shadow-2xl"
         }
         style={{ backgroundImage: `url(${slides[currentIndex]})` }}
       >

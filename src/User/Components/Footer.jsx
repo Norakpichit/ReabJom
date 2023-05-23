@@ -1,39 +1,39 @@
+import { FaFacebook, FaInstagram, FaTiktok, FaTwitter } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
-    <footer className="footer p-20 bg-base-200 text-base-content grid grid-cols-4 max-md:grid-cols-2">
-      <div>
-        <span className="footer-title">Services</span>
-        <a className="link link-hover">Branding</a>
-        <a className="link link-hover">Design</a>
-        <a className="link link-hover">Marketing</a>
-        <a className="link link-hover">Advertisement</a>
+    <footer className="footer p-20 bg-dark text-white grid grid-cols-3 max-md:grid-cols-2 text-xl">
+      <div className="flex flex-col gap-5">
+        <span className="footer-title">User</span>
+        <a className="link link-hover font-thin">Report a problem</a>
+        <a className="link link-hover font-thin">RATE US!</a>
+        <a className="btn bg-light border-none hover:bg-light hover:translate-y-1 transition-all text-[#548BBE] ">
+          Start Booking
+        </a>
       </div>
-      <div>
-        <span className="footer-title">Company</span>
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
+      <div className="flex flex-col gap-5">
+        <span className="footer-title">Service Provider</span>
+        <a className="link link-hover font-thin">About Us</a>
+        <a className="link link-hover font-thin">Details</a>
+        <Link to="/Request" className="nav-link">
+          Become a Seller
+        </Link>
       </div>
-      <div>
-        <span className="footer-title">Legal</span>
-        <a className="link link-hover">Terms of use</a>
-        <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
-      </div>
-      <div>
-        <span className="footer-title">Newsletter</span>
-        <div className="form-control w-80 max-md:w-60 max-sm:w-52">
-          <label className="label">
-            <span className="label-text">Enter your email address</span>
-          </label>
-          <div className="relative">
-            <input type="text" className="input input-bordered w-full pr-16" />
-            <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">
-              Subscribe
-            </button>
-          </div>
-        </div>
+      <div className="flex flex-col gap-5">
+        <span className="footer-title">Follow Us</span>
+        <a className="link link-hover flex font-thin gap-3">
+          <FaFacebook className="w-8 h-8" /> Facebook
+        </a>
+        <a className="link link-hover flex font-thin gap-3">
+          <FaTwitter className="w-8 h-8" /> Twitter
+        </a>
+        <a className="link link-hover flex font-thin gap-3">
+          <FaInstagram className="w-8 h-8" /> Instagram
+        </a>
+        <a className="link link-hover flex font-thin gap-3">
+          <FaTiktok className="w-8 h-8" /> Tiktok
+        </a>
       </div>
     </footer>
   );
