@@ -21,8 +21,7 @@ export default function Slideshow() {
       <div
         className={
           " w-[100%] lg:w-4/5 h-full flex justify-between bg-cover bg-center lg:rounded-b-3xl transition-all"
-        }
-        style={{ backgroundImage: `url(${slides[currentIndex]})` }}
+          style={{ backgroundImage: `url(${slides[currentIndex]})` }}
       >
         <button
           className="btn h-full rounded-none bg-transparent border-none text-2xl font-extrabold rounded-r-2xl"
