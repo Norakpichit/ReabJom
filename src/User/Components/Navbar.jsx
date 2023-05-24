@@ -71,7 +71,7 @@ export default function Navbar() {
         <Link to="/Login">
           <a className="btn btn-sm bg-transparent border-none hover:bg-transparent hover:translate-y-1">Log in</a>
         </Link>
-        <Link to="/SignUp">
+        <Link to="/Signup">
           <a className="btn bg-light border-none hover:bg-light hover:translate-y-1 transition-all btn-sm text-[#548BBE] ">Sign up</a>
         </Link>
       </div>
