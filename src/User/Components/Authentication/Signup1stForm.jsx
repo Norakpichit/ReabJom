@@ -6,11 +6,10 @@ import {CgSpinner} from "react-icons/cg";
 import PhoneInput from 'react-phone-input-2'
 import "react-phone-input-2/lib/style.css";
 import OTPInput from "otp-input-react";
-import { auth, provider } from '../../../Firebase/firebase.config';
+import { auth } from '../../../Firebase/firebase.config';
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import { signInWithPopup } from 'firebase/auth';
 import { toast } from "react-hot-toast";
-import SignedIn from './SignedIn';
+
 
 export default function Signup1stForm(){
     const [switchSignup, setSwitchSignup] = useState(false);
@@ -22,14 +21,10 @@ export default function Signup1stForm(){
     const [loading, setLoading] = useState(false);
     const [showOTP, setShowOTP] = useState(false);
     const [user,setUser] = useState(null);
-    const [gmail,setGmail] = useState("");
+    
     
     // useEffect(() => {
     // }, [switchSignup]);
-
-    useEffect(()=>{
-        setGmail(localStorage.getItem('email'))
-    })
     
     const handleEmailChange = (event) => {
         setUsername(event.target.value);
@@ -42,13 +37,6 @@ export default function Signup1stForm(){
       
     const handleClick = () => {
         setSwitchSignup(!switchSignup);
-    };
-
-    const handleGmail = () => {
-        signInWithPopup(auth,provider).then((data)=>{
-            setGmail(data.user.email)
-            localStorage.setItem("email",data.user.email)
-        })
     };
 
     function onCaptchaVerify() {
@@ -196,12 +184,6 @@ export default function Signup1stForm(){
                                                         }
                                                         <span>Sign Up</span>
                                                     </button>
-                                                    
-                                                    {gmail ? <Navigate to={"/SignedIn"}/> :
-                                                        <button onClick={handleGmail} className="w-full mt-3 mb-2 items-center font-bold text-sm text-blue-500 hover:text-blue-800">
-                                                            Use Gmail Account?
-                                                        </button>
-                                                    }
                                                 </div>  
                                             }
 

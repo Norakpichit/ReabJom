@@ -1,11 +1,10 @@
 import React from "react";
-import { Navigate} from 'react-router-dom';
 
 function SignedIn(){
     const logout =()=>{
         localStorage.clear();
         // window.location.reload();
-        window.location.replace('/Signup');
+        window.location.replace('/Login');
     }
     return (
         <div className="m-auto mt-6 mb-6 !z-5 relative flex flex-col rounded-[20px] max-w-[300px] md:max-w-[400px] bg-blue-200 bg-clip-border shadow-3xl shadow-shadow-500 flex flex-col w-full !p-6 3xl:p-![18px] undefined">

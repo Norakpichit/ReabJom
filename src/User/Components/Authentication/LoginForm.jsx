@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import withus_black from "../../../assets/withus_black.png";
+import { signInWithPopup } from 'firebase/auth';
+import { auth, provider } from '../../../Firebase/firebase.config';
+import { Navigate } from 'react-router-dom';
 
 export default function LoginForm() {
+    const [gmail,setGmail] = useState("");
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -18,8 +23,19 @@ export default function LoginForm() {
         // handle login logic here
     }
 
+    const handleGmail = () => {
+        signInWithPopup(auth,provider).then((data)=>{
+            setGmail(data.user.email)
+            localStorage.setItem("email",data.user.email)
+        })
+    };
+
+    useEffect(()=>{
+        setGmail(localStorage.getItem('email'))
+    });
+
     return (
-    <form onSubmit={handleSubmit} className="bg-white drop-shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <section className="bg-white drop-shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className='m-auto !z-5 relative flex flex-col rounded-[20px] max-w-[300px] md:max-w-[400px] bg-blue-200 bg-clip-border shadow-3xl shadow-shadow-500 flex flex-col w-full !p-6 3xl:p-![18px] undefined'>    
             <img src={withus_black} alt="" className=" h-12 m-auto" /> 
             <label className='text-center block mb-3 mt-1'> Login to an Account </label>
@@ -53,17 +69,22 @@ export default function LoginForm() {
 
             {/* <div className="flex items-center justify-between"> */}
                 <button className="drop-shadow-md bg-blue-500 w-full flex gap-1 justify-center hover:bg-blue-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline"
-                type="submit"
-                >
+                type="submit">
                     <span> Log In </span>
                 </button>
 
-                <button className="mt-3 inline-block align-center font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+                {gmail ? <Navigate to={"/SignedIn"}/> :
+                    <button onClick={handleGmail} className="w-full mt-4 items-center font-bold text-sm text-blue-500 hover:text-blue-800">
+                        Use Google Account?
+                    </button>
+                }
+
+                <button className="mt-2 inline-block align-center font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
                     <span> Forgot Password? </span>
                 </button>
             {/* </div> */}
         </div>
-    </form>
+    </section>
     );
 }
 
