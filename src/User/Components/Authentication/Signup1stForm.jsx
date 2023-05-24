@@ -128,7 +128,7 @@ export default function Signup1stForm(){
                                             </div>
 
                                             <h1 className="text-gray-700 font-bold mb-3 mx-auto"> Phone Number </h1>
-                                            <PhoneInput country={"ca"} value={ph} onChange={setPh} className="mb-4" />
+                                            <PhoneInput country={'kh'} value={ph} onChange={setPh} placeholder='លេខទូរសព្ទ' className="mb-4" enableSearch />
 
                                             {/* <div>
                                             {!switchSignup &&
@@ -142,7 +142,7 @@ export default function Signup1stForm(){
                                                 pattern="[0]{1}[1-9]{1}[0-9]{7}|[0]{1}[1-9]{1}[0-9]{8}" 
                                                 onChange={handlePhoneChange}
                                                 />
-                                            </div>}  
+                                            </div>}
 
                                             {switchSignup &&
                                             <div className="mb-3">
@@ -158,13 +158,14 @@ export default function Signup1stForm(){
                                             </div>}
                                             </div> */}
                                         
-                                            <button onClick={onSignup} className="bg-blue-500 w-full flex gap-1 justify-center hover:bg-blue-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline"
-                                                type="submit">
-                                                {/* disabled={!isFormValid} */}
+                                            <button onClick={onSignup} className="bg-blue-500 w-full shadow drop-shadow-md flex gap-1 justify-center hover:bg-blue-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline">
+                                                {
+                                                    loading && <CgSpinner size={20} className='mt-1 animate-spin'/>
+                                                }
                                                 <span>Sign Up</span>
                                             </button>
 
-                                            <button className="mt-3 inline-block align-center font-bold text-sm text-blue-500 hover:text-blue-800" href="#"
+                                            <button className="mt-3 inline-block align-center font-bold text-sm text-blue-500 hover:text-blue-800"
                                                 onClick={handleClick}>
                                                 Try Another Way?
                                             </button>
