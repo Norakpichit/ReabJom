@@ -40,7 +40,7 @@ export default function SignupInfo(){
                     />
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2" htmlFor="lastname"> Last Name </label>
                     <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="lastname"
@@ -48,28 +48,6 @@ export default function SignupInfo(){
                     placeholder="នាមត្រកូល"
                     value={lastname}
                     onChange={handleLastnameChange}
-                    required
-                    />
-                </div>
-                
-                <div className="mb-6">
-                    <label className="block text-gray-700 font-bold" htmlFor="username"> Password </label>
-                    <small className='text-green-700 flex flex-wrap'>
-                    * ត្រូវមានយ៉ាងតិច
-                        <p className={"text-red-600"}>&nbsp; 8តួ &nbsp;</p> 
-                    ហើយ
-                        <p className={"text-red-600"}>&nbsp; 1តួ &nbsp;</p> 
-                        <p className={"text-green-700"}> ជា </p> 
-                    ​(លេខ និង អក្សរធំ)
-                                {/*At least 1 (Number,Uppercase) and 8 or more characters*/}
-                    </small>
-                    <input className="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="password"
-                    type="password"
-                    placeholder="ពាក្យសម្ងាត់"
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    value={password}
-                    onChange={handlePasswordChange}
                     required
                     />
                 </div>

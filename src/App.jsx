@@ -6,6 +6,7 @@ import Navbar from "./User/Components/Navbar";
 import Footer from "./User/Components/Footer";
 import Signup from "./User/Pages/Signup";
 import SignupInfo from "./User/Pages/SignupInfo";
+import SignedIn from "./User/Components/Authentication/SignedIn";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="Login" element={<Login />} />
         <Route path="Signup" element={<Signup />} />
         <Route path="Signup/Info" element={<SignupInfo />} />
+        <Route path="SignedIn" element={<SignedIn />} />
       </Routes>
       <Footer />
     </BrowserRouter>

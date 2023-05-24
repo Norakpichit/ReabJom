@@ -1,41 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import withus_black from "../../../assets/withus_black.png";
 import { Navigate} from 'react-router-dom';
-import {BsTelephoneFill,BsFillShieldLockFill} from "react-icons/bs";
+import {BsTelephoneFill,BsFillShieldLockFill, BsFillEnvelopeFill} from "react-icons/bs";
 import {CgSpinner} from "react-icons/cg";
 import PhoneInput from 'react-phone-input-2'
 import "react-phone-input-2/lib/style.css";
 import OTPInput from "otp-input-react";
-import { auth } from '../../../Firebase/firebase.config';
+import { auth, provider } from '../../../Firebase/firebase.config';
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { signInWithPopup } from 'firebase/auth';
 import { toast } from "react-hot-toast";
+import SignedIn from './SignedIn';
 
 export default function Signup1stForm(){
     const [switchSignup, setSwitchSignup] = useState(false);
     const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const [isFormValid, setIsFormValid] = useState(false);
     const [ph, setPh] = useState("");
     const [otp,setOtp] = useState("");
     const [loading, setLoading] = useState(false);
     const [showOTP, setShowOTP] = useState(false);
     const [user,setUser] = useState(null);
+    const [gmail,setGmail] = useState("");
     
-    useEffect(() => {
-        console.log(username);
-    }, [switchSignup]);
+    // useEffect(() => {
+    // }, [switchSignup]);
 
-    const handlePhoneChange = (event) => {
-        setUsername(event.target.value);
-        validatePhoneForm();
-    };
+    useEffect(()=>{
+        setGmail(localStorage.getItem('email'))
+    })
     
     const handleEmailChange = (event) => {
         setUsername(event.target.value);
         validateEmailForm();
     };
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    };
       
     const handleClick = () => {
         setSwitchSignup(!switchSignup);
+    };
+
+    const handleGmail = () => {
+        signInWithPopup(auth,provider).then((data)=>{
+            setGmail(data.user.email)
+            localStorage.setItem("email",data.user.email)
+        })
     };
 
     function onCaptchaVerify() {
@@ -121,51 +134,78 @@ export default function Signup1stForm(){
                                 ) : (
                                     <>
                                         <div className='m-auto !z-5 relative flex flex-col rounded-[20px] max-w-[300px] md:max-w-[400px] bg-blue-200 bg-clip-border shadow-3xl shadow-shadow-500 flex flex-col w-full !p-6 3xl:p-![18px] undefined'>    
-                                            <img src={withus_black} alt="" className=" h-12 m-auto" />
-                                            <label className='text-center block mb-3 mt-1'> Create an Account </label>
-                                            <div className='bg-white text-blue-500 w-fit mb-3 mx-auto p-4 rounded-full'>
-                                                <BsTelephoneFill size={30} />
-                                            </div>
-
-                                            <h1 className="text-gray-700 font-bold mb-3 mx-auto"> Phone Number </h1>
-                                            <PhoneInput country={'kh'} value={ph} onChange={setPh} placeholder='លេខទូរសព្ទ' className="mb-4" enableSearch />
-
-                                            {/* <div>
                                             {!switchSignup &&
-                                            <div className="mb-3">
-                                                <label className="block text-gray-700 font-bold mb-2" htmlFor="username"> Phone Number </label>
-                                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                id="username"
-                                                value={username}
-                                                type="tel"
-                                                placeholder="លេខទូរសព្ទ"
-                                                pattern="[0]{1}[1-9]{1}[0-9]{7}|[0]{1}[1-9]{1}[0-9]{8}" 
-                                                onChange={handlePhoneChange}
-                                                />
-                                            </div>}
+                                                <div>
+                                                    <img src={withus_black} alt="" className=" h-12 m-auto" />
+                                                    <label className='text-center block mb-3 mt-1'> Create an Account </label>
+                                                    <div className='bg-white text-blue-500 w-fit mb-3 mx-auto p-4 rounded-full'>
+                                                        <BsTelephoneFill size={30} />
+                                                    </div>
 
+                                                    <h1 className="text-gray-700 font-bold mb-3 mx-auto"> Phone Number </h1>
+                                                    <PhoneInput country={'kh'} value={ph} onChange={setPh} placeholder='លេខទូរសព្ទ' className="mb-4" enableSearch />
+
+                                                    <button onClick={onSignup} className="bg-blue-500 mb-3 w-full shadow drop-shadow-md flex gap-1 justify-center hover:bg-blue-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline">
+                                                        {
+                                                            loading && <CgSpinner size={20} className='mt-1 animate-spin'/>
+                                                        }
+                                                        <span>Sign Up</span>
+                                                    </button>
+                                                </div>
+                                            }
                                             {switchSignup &&
-                                            <div className="mb-3">
-                                                <label className="block text-gray-700 font-bold mb-2" htmlFor="username"> Email </label>
-                                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                id="username"
-                                                value={username}
-                                                type="email"
-                                                placeholder="អ៊ីមែល"
-                                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
-                                                onChange={handleEmailChange}
-                                                />
-                                            </div>}
-                                            </div> */}
-                                        
-                                            <button onClick={onSignup} className="bg-blue-500 w-full shadow drop-shadow-md flex gap-1 justify-center hover:bg-blue-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline">
-                                                {
-                                                    loading && <CgSpinner size={20} className='mt-1 animate-spin'/>
-                                                }
-                                                <span>Sign Up</span>
-                                            </button>
+                                                <div>
+                                                    <img src={withus_black} alt="" className=" h-12 m-auto" />
+                                                    <label className='text-center block mb-3 mt-1'> Create an Account </label>
+                                                    <div className='bg-white text-blue-500 w-fit mb-3 mx-auto p-4 rounded-full'>
+                                                        <BsFillEnvelopeFill size={30} />
+                                                    </div>
 
-                                            <button className="mt-3 inline-block align-center font-bold text-sm text-blue-500 hover:text-blue-800"
+                                                    <h1 className="text-gray-700 font-bold mb-3 mx-auto"> Email </h1>
+                                                    <input className="shadow drop-shadow-md mb-4 appearance-none border rounded w-full py-2.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                        id="username"
+                                                        value={username}
+                                                        type="email"
+                                                        placeholder="អ៊ីមែល"
+                                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                                                        // onChange={handleEmailChange}
+                                                    />
+
+                                                    <h1 className="text-gray-700 font-bold mb-1 mx-auto"> Password </h1>
+                                                    {/* <small className='text-green-700 flex flex-wrap'>
+                                                        * ត្រូវមានយ៉ាងតិច
+                                                            <p className={"text-red-600"}>&nbsp; 8តួ &nbsp;</p> 
+                                                        ហើយ
+                                                            <p className={"text-red-600"}>&nbsp; 1តួ &nbsp;</p> 
+                                                            <p className={"text-green-700"}> ជា </p> 
+                                                        ​(លេខ និង អក្សរធំ)
+                                                    </small> */}
+                                                    <input className="shadow drop-shadow-md mb-4 mt-2 appearance-none border rounded w-full py-2.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                        id="password"
+                                                        type="password"
+                                                        placeholder="ពាក្យសម្ងាត់"
+                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                                        value={password}
+                                                        // onChange={handlePasswordChange}
+                                                        required
+                                                    />
+
+                                                    <button onClick={""} className="bg-blue-500 w-full shadow drop-shadow-md flex gap-1 justify-center hover:bg-blue-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline">
+                                                        {
+                                                            loading && <CgSpinner size={20} className='mt-1 animate-spin'/>
+                                                        }
+                                                        <span>Sign Up</span>
+                                                    </button>
+                                                    
+                                                    {gmail ? <Navigate to={"/SignedIn"}/> :
+                                                        <button onClick={handleGmail} className="w-full mt-3 mb-2 items-center font-bold text-sm text-blue-500 hover:text-blue-800">
+                                                            Use Gmail Account?
+                                                        </button>
+                                                    }
+                                                </div>  
+                                            }
+
+                                            <button className=" inline-block align-center font-bold text-sm text-blue-500 hover:text-blue-800"
                                                 onClick={handleClick}>
                                                 Try Another Way?
                                             </button>
