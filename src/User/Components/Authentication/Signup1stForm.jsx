@@ -1,34 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import withus_black from "../../../assets/withus_black.png";
-import { Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import {BsTelephoneFill,BsFillShieldLockFill, BsFillEnvelopeFill} from "react-icons/bs";
 import {CgSpinner} from "react-icons/cg";
 import PhoneInput from 'react-phone-input-2'
 import "react-phone-input-2/lib/style.css";
 import OTPInput from "otp-input-react";
 import { auth } from '../../../Firebase/firebase.config';
-import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { RecaptchaVerifier, signInWithPhoneNumber, createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-hot-toast";
-
 
 export default function Signup1stForm(){
     const [switchSignup, setSwitchSignup] = useState(false);
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [isFormValid, setIsFormValid] = useState(false);
     const [ph, setPh] = useState("");
     const [otp,setOtp] = useState("");
     const [loading, setLoading] = useState(false);
     const [showOTP, setShowOTP] = useState(false);
-    const [user,setUser] = useState(null);
+    const [user, setUser] = useState(null);
     
     
     // useEffect(() => {
     // }, [switchSignup]);
     
     const handleEmailChange = (event) => {
-        setUsername(event.target.value);
-        validateEmailForm();
+        setEmail(event.target.value);
     };
 
     const handlePasswordChange = (event) => {
@@ -39,6 +37,25 @@ export default function Signup1stForm(){
         setSwitchSignup(!switchSignup);
     };
 
+    const SignupEmailPass = () => {
+        setLoading(true);
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            console.log(user);
+            toast.success("Account Successfully Created!");
+            setLoading(false);
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            // const errorMessage = error.message;
+            toast.error(errorCode);
+            // ..
+        });
+    }
+
     function onCaptchaVerify() {
         if (!window.recaptchaVerifier) {
             window.recaptchaVerifier = new RecaptchaVerifier(
@@ -46,15 +63,15 @@ export default function Signup1stForm(){
                 {
                 'size': "invisible",
                 'callback': (response) => {
-                    onSignup();
+                    onSignupTel();
                 },
                 'expired-callback': () => {},
                 },auth
             );
         }
     }
-    
-    function onSignup() {
+
+    function onSignupTel() {
         setLoading(true);
         onCaptchaVerify();
     
@@ -78,16 +95,16 @@ export default function Signup1stForm(){
     function onOTPVerify() {
         setLoading(true);
         window.confirmationResult
-            .confirm(otp)
-            .then(async (res) => {
-                console.log(res);
-                setUser(res.user);
-                setLoading(false);
+        .confirm(otp)
+        .then(async (res) => {
+            console.log(res);
+            setUser(res.user);
+            setLoading(false);
         })
         .catch((err) => {
-                console.log(err);
-                setLoading(false);
-            });
+            console.log(err);
+            setLoading(false);
+        });
     }
         
     return (
@@ -133,7 +150,7 @@ export default function Signup1stForm(){
                                                     <h1 className="text-gray-700 font-bold mb-3 mx-auto"> Phone Number </h1>
                                                     <PhoneInput country={'kh'} value={ph} onChange={setPh} placeholder='លេខទូរសព្ទ' className="mb-4" enableSearch />
 
-                                                    <button onClick={onSignup} className="bg-blue-500 mb-3 w-full shadow drop-shadow-md flex gap-1 justify-center hover:bg-blue-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline">
+                                                    <button onClick={onSignupTel} className="bg-blue-500 mb-3 w-full shadow drop-shadow-md flex gap-1 justify-center hover:bg-blue-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline">
                                                         {
                                                             loading && <CgSpinner size={20} className='mt-1 animate-spin'/>
                                                         }
@@ -151,12 +168,13 @@ export default function Signup1stForm(){
 
                                                     <h1 className="text-gray-700 font-bold mb-3 mx-auto"> Email </h1>
                                                     <input className="shadow drop-shadow-md mb-4 appearance-none border rounded w-full py-2.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                        id="username"
-                                                        value={username}
+                                                        id="email"
+                                                        value={email}
                                                         type="email"
                                                         placeholder="អ៊ីមែល"
-                                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
-                                                        // onChange={handleEmailChange}
+                                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                                        onChange={handleEmailChange}
+                                                        required
                                                     />
 
                                                     <h1 className="text-gray-700 font-bold mb-1 mx-auto"> Password </h1>
@@ -174,20 +192,20 @@ export default function Signup1stForm(){
                                                         placeholder="ពាក្យសម្ងាត់"
                                                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                                         value={password}
-                                                        // onChange={handlePasswordChange}
+                                                        onChange={handlePasswordChange}
                                                         required
                                                     />
 
-                                                    <button onClick={""} className="bg-blue-500 w-full shadow drop-shadow-md flex gap-1 justify-center hover:bg-blue-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline">
+                                                    <button onClick={SignupEmailPass} className="bg-blue-500 w-full mb-3 shadow drop-shadow-md flex gap-1 justify-center hover:bg-blue-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline">
                                                         {
                                                             loading && <CgSpinner size={20} className='mt-1 animate-spin'/>
                                                         }
                                                         <span>Sign Up</span>
                                                     </button>
-                                                </div>  
+                                                </div>
                                             }
 
-                                            <button className=" inline-block align-center font-bold text-sm text-blue-500 hover:text-blue-800"
+                                            <button className=" inline-block align-center font-bold text-sm text-blue-700 hover:text-blue-500"
                                                 onClick={handleClick}>
                                                 Try Another Way?
                                             </button>

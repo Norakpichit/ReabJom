@@ -74,12 +74,12 @@ export default function LoginForm() {
                 </button>
 
                 {gmail ? <Navigate to={"/SignedIn"}/> :
-                    <button onClick={handleGmail} className="w-full mt-4 items-center font-bold text-sm text-blue-500 hover:text-blue-800">
+                    <button onClick={handleGmail} className="w-full mt-4 items-center font-bold text-sm text-blue-700 hover:text-blue-500">
                         Use Google Account?
                     </button>
                 }
 
-                <button className="mt-2 inline-block align-center font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+                <button className="mt-2 inline-block align-center font-bold text-sm text-blue-700 hover:text-blue-500" href="#">
                     <span> Forgot Password? </span>
                 </button>
             {/* </div> */}
