@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {BsTelephoneFill} from "react-icons/bs";
 import { BsFillShieldLockFill } from 'react-icons/bs';
 import {CgSpinner} from "react-icons/cg";
-import PhoneInput from 'react-phone-input-2';
+import PhoneInput from 'react-phone-input-2'
 import "react-phone-input-2/lib/style.css";
 import OTPInput from "otp-input-react";
 
@@ -15,7 +15,7 @@ export default function Signup1stForm(){
     const [ph, setPh] = useState("");
     const [otp,setOtp] = useState("");
     const [loading, setLoading] = useState(false);
-    const [showOTP, setShowOTP] = useState(false);
+    const [showOTP, setShowOTP] = useState(true);
     
     useEffect(() => {
         console.log(username);

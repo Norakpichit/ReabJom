@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 .otp-container {
-    @apply flex justify-between gap-2;
+    @apply flex justify-between gap-2 drop-shadow-md;
 }
 .otp-container input {
-    @apply !mr-0 flex-1 py-5 outline-none;
+    @apply !mr-0 flex-1 py-5 outline-none rounded-md;
 }
 .react-tel-input .form-control {
     @apply !w-full py-5 !text-base;
