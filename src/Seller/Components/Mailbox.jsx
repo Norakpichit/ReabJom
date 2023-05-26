@@ -1,6 +1,7 @@
 const MailBox = () => {
     return ( 
-    <div >
+    <div className="w-full">
+
         MailBox
         <a href="/"> back</a>
     </div>

@@ -1,6 +1,6 @@
 const Sell_history = () => {
     return ( 
-    <div >
+        <div className="w-full">
         Sell History
         <a href="/"> back</a>
     </div>

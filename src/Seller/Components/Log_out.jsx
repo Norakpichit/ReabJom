@@ -1,6 +1,7 @@
 const Log_out = () => {
     return ( 
-    <div >
+        <div className="w-full">
+
         Log out
         <a href="/"> back</a>
     </div>

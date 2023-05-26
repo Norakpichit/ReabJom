@@ -7,9 +7,8 @@ import { AiOutlineHome } from "react-icons/ai";
 import { GoMail } from "react-icons/go";
 import { FiCalendar } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import PAFA from "../assets/pafa.jpg";
-import Logo from "../assets/logo.png";
 import Navbar from "./Navbar";
+import { Chat } from './Components/ChatSystem/Chat';
 
 
 const Sidebar = (props) => {
@@ -70,8 +69,8 @@ const Sidebar = (props) => {
       {/* Bigscreen */}
       {matches && (
         <div>
-        <Navbar />
-        <section className="flex gap-6 bg-white">
+          <Navbar/>
+        <section className="flex bg-white h-full">
   
           <div
             className={`bg-[#DDE7FC] min-h-screen ${
@@ -81,7 +80,7 @@ const Sidebar = (props) => {
             <div>
               <div className={"pt-2 flex justify-between"}>
                 <div
-                  className={`whitespace-pre duration-500 flex item-center${
+                  className={` duration-500 flex item-center${
                     !open && "hidden"
                     
                   }`}
@@ -120,7 +119,7 @@ const Sidebar = (props) => {
                   <h2
                     className={`${
                       open && "hidden"
-                    } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
+                    } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit z-50 `}
                   >
                     {menu?.name}
                   </h2>
@@ -128,7 +127,7 @@ const Sidebar = (props) => {
               ))}
             </div>
           </div>
-          <div>{setconnect}</div>
+        {setconnect}
         </section>
       </div>
       )}
@@ -136,7 +135,7 @@ const Sidebar = (props) => {
       {!matches && (
         <div> 
         <Navbar />
-        <section className="flex gap-6 bg-white item-center">
+        <section className="flex bg-white h-full">
   
           <div className={'bg-[#DDE7FC] min-h-screen w-13 duration-500 text-gray-100'}>
             <div className="mt-2 flex flex-col gap-4 relative text-black">
@@ -150,7 +149,7 @@ const Sidebar = (props) => {
                 >
                   <div>{React.createElement(menu?.icon, { size: "20" })}</div>
                   <h2
-                    className={'absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  '}
+                    className={'absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit z-50 '}
                   >
                     {menu?.name}
                   </h2>
@@ -158,7 +157,7 @@ const Sidebar = (props) => {
               ))}
             </div>
           </div>
-          <div>{setconnect}</div>
+          {setconnect}
         </section>
       </div>
       )}
